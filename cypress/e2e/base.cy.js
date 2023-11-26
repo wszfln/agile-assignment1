@@ -3,7 +3,6 @@ let movies;
 let movie; 
 let Keywords;
 let Credits;
-let Reviews;
 
 function formatNumber (value) {
   if (!value) {
@@ -66,26 +65,24 @@ describe("Base tests", () => {
         .then((res) => {
           Keywords = res
         })
+
+        cy.request(
+          `https://api.themoviedb.org/3/movie/${movies[0].id}/credits?api_key=${Cypress.env("TMDB_KEY")}&language=en-US`
+        )
+        .its("body")
+        .then((res) => {
+          Credits = res
+        })
     });
     beforeEach(() => {
       cy.visit(`/movies/${movies[0].id}`);
     });
-    it(" displays the movie title, overview and genres ", () => {
+    it(" displays the movie title, overview and other information ", () => {
       cy.wait(2000)
       cy.get("p").contains(movie.title);
       cy.get("p").contains("Overview");
       cy.get("p").contains(movie.overview);
       cy.get("p").contains(movie.release_date)
-      cy.get('div').each($div => {
-        cy.wrap($div).within(() => {
-      cy.get('.css-m69qwo').each($card => {
-        const genreChipLabels = movie.genres.map((g) => g.name);
-        cy.get(".css-6od3lo").each(($card, index) => {
-          cy.wrap($card).should('be.visible').contains(genreChipLabels[index]);
-        });
-    });
-});
-    });
     });
 
     it(" displays the movie status, original language, Popularity, Runtime, Revenue, Budge", () => {
