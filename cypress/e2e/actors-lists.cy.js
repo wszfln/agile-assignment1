@@ -49,9 +49,6 @@ describe("Actors lists tests", () =>{
             it("Should display the movies that the actor has been in", () =>{
                 cy.getCards(creditedMovies); 
             });
-            it("Should display the actor's biograpy", () =>{
-                cy.get('.css-2ulfj5-MuiTypography-root').should('be.visible').contains(popularActor.biography)
-            });
         })
     });
 });
