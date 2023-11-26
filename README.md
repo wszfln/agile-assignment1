@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Assignment 1 - Agile Software Practice.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Name: Yingying Lu (20095278)
 
-## Available Scripts
+This repository contains the implementation of a React App, its associated Cypress tests and the GitLab CI pipeline.
 
-In the project directory, you can run:
+## React App Features.
 
-### `npm start`
+Youtube link: https://youtu.be/l3BuzsCU-SQ
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
++ Modified movie details page:
+  + Added a movie poster at the top
+  + modified the movie introduction information and keywords, and added new MUI components
+  + added a cast section, and added a link button that can directly link to actor details on this section
+  + added a list of similar movies
++ Added must-watch pages:
+  + People can add must-watch movies to this page from the Upcoming page, or delete them
+  + Added search and filter functions to search for movie names and filter movies by genre
++ Added actor page:
+  + Added sorting function, actors are displayed on this page in descending order of popularity
+  + Added a search function to search based on actor names
++ Added actor details page:
+  + This page lists the actor's biography, popularity and birthday age information, images and acted movies
+  + Users can jump to the movie details page by clicking the more information button in the list of movies they have acted in
++ Pagination:
+  + Paginate all pages to only show 10 movies or actors per page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## E2E Tests.
 
-### `npm test`
+### Unique functionality testing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
++ Actors-lists (cypress/e2e/actors-lists.cy.js)
+  + Popular Actor page
+    + displays the page header and 10 actors
+    + displays the correct actor names
+  + Popular Actor Details page
+    + display the movies that the actor has been in
++ Base (cypress/e2e/base.cy.js)
+  + Discover Movies page
+    + displays the correct movie titles
+  + The movie details page
+    + displays the movie title, overview and other information
+    + displays the movie status, original language, Popularity, Runtime, Revenue, Budge
+    + displays the movie keywords
+    + displays the series cast
++ Filtering (cypress/e2e/filtering.cy.js)
+  + Searching for actors by name
+    + only display trending actors with 'g' in their name
+    + handles case when there are no matches
++ reviews (cypress/e2e/reviews.cy.js)
+  + The movie reviews in the movie detail page
+    + display the review author and excerpt
+    + handle the situation that do not have any reviews
+  + The movie full review page
+    + display the content of the review
++ upcoming (cypress/e2e/upcoming.cy.js)
+  + The upcoming movies page
+    + displays the upcoming page header and 10 upcoming movies
+    + Add into must watch
+    + Remove from must watch
 
-### `npm run build`
+### Error/Exception testing
++ Filtering (cypress/e2e/filtering.cy.js)
+  + By movie title
+    + only display movies with 'm' in the title
+    + handles case when there are no matches
+  + By movie genre
+    + show movies with the selected genre
+  + Combined genre and title
+    + show movies with the selected genre and searched title
+    + handles case when there are no matches
++ reviews (cypress/e2e/reviews.cy.js)
+  + The movie reviews in the movie detail page
+    + display the review author and excerpt
+    + handle the situation that do not have any reviews
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Cypress Custom commands
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
++ cypress/e2e/actors-lists.cy.js
++ cypress/e2e/filtering.cy.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Code Splitting.
 
-### `npm run eject`
+## Pull Requests.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+https://github.com/wszfln/agile-assignment1.git
+https://gitlab.com/yingyinglu1/agileassignment-ci
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Independent learning
