@@ -34,7 +34,7 @@ const PeopleDetails = ({ person, personMovie }) => {
         Overview
       </Typography>
 
-      <Typography variant="h6" component="p">
+      <Typography variant="h6" component="p" >
       {person.biography}
       </Typography>
       <Paper component="ul" sx={{...root}}>
