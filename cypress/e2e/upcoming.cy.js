@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 import truncate from "lodash/truncate";
 
-let upcomingMovies;
+let upcoming;
+let movies;
 
 describe("Upcoming tests", () => {
   before(() => {
@@ -12,7 +13,7 @@ describe("Upcoming tests", () => {
     )
       .its("body")
       .then((response) => {
-        upcomingMovies = response.results;
+        upcoming = response.results;
       });
   });
   beforeEach(() => {
@@ -37,22 +38,16 @@ describe("Upcoming tests", () => {
     });
   })
 
-  describe("The must-watch page", () => {
+  describe("Remove from must watch", () => {
     beforeEach(() => {
       cy.get("button[aria-label='add to Must Watch']").eq(1).click();
       cy.get("button[aria-label='add to Must Watch']").eq(3).click();
-      cy.get("a").contains("Must Watch").click();
+      cy.get("button").contains("Must Watch").click();
     });
-    it("only the tagged movies are listed", () => {
-      cy.get(".MuiCardHeader-content").should("have.length", 2);
-      cy.get(".MuiCardHeader-content")
-        .eq(0)
-        .find("p")
-        .contains(movies[1].title);
-      cy.get(".MuiCardHeader-content")
-        .eq(1)
-        .find("p")
-        .contains(movies[3].title);
+    it(" The deleted movie do not show the red add-to-must-watch svg", () => {
+      cy.get("button[aria-label='remove from Must Watch']").eq(0).click();
+      cy.get("button").contains("Upcoming").click();
+      cy.get(".MuiCardHeader-root").eq(1).find("svg").should("not.exist");
     });
   });
-});
+  });
